@@ -1,0 +1,8 @@
+__pycache__
+venv/
+.env
+
+main-1.py
+main-2.py
+main-post.py
+student.py
