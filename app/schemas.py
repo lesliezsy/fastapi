@@ -1,4 +1,3 @@
-# 寫帶有 Python 型別的程式碼
 # Pydantic is a data validation and settings management library for Python
 from pydantic import BaseModel, EmailStr, conint, Field
 from datetime import datetime
@@ -24,7 +23,7 @@ class UserOut(BaseModel):
     created_at: datetime
 
     class Config:
-        from_attributes = True
+        orm_mode = True
         # this is to tell pydantic to use the ORM model
         # instead of the dict model
         # this is to convert the SQLAlchemy model to a Pydantic model
@@ -39,25 +38,23 @@ class Post(PostBase):
     owner: UserOut
 
     class Config:
-        from_attributes = True
-        # this is to tell pydantic to use the ORM model
-        # instead of the dict model
-        # this is to convert the SQLAlchemy model to a Pydantic model
+        orm_mode = True
+        # from_attributes = True
+
 
 class PostOut(BaseModel):
     Post: Post
     votes: int
 
     class Config:  
-        from_attributes = True
+        orm_mode = True
+        # from_attributes = True
        
 
  
-
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
-
 
 class UserLogin(BaseModel):
     email: EmailStr

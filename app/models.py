@@ -1,5 +1,4 @@
-# this file is to define db tables as python models
-
+# This file is to define db tables as python models
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import text

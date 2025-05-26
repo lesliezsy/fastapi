@@ -1,0 +1,36 @@
+services:
+  api:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      # - <port on local host>:<port in container>
+      - 8000:8000
+    volumes:
+      - ./:/app:ro
+    # env_file:
+    #   - ./.env
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=xxxxxxxx
+      - DATABASE_NAME=fastapi
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=secret_key
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=60
+      
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: xxxxxxxx
+      POSTGRES_DB: fastapi
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
+ 

@@ -1,4 +1,4 @@
-# this file is to handle db connections
+# This file is to handle db connections
 
 # import SQLAlchemy parts
 from sqlalchemy import create_engine
@@ -21,7 +21,8 @@ Base = declarative_base()
 
 
 # create a new session for each request
-# every request has its own session, each request has its own connection to the database
+# every request has its own session
+# each request has its own connection to the database
 def get_db():
     db = SessionLocal()
     try:
@@ -30,19 +31,19 @@ def get_db():
         db.close()
 
 
-
 # import psycopg2
 # from psycopg2.extras import RealDictCursor
 # import time
 
-# cursor_factory=RealDictCursor is to give the coliumn names and values
+# cursor_factory=RealDictCursor is to give the column names and values
 # RealDictCursor is a cursor that returns rows as dictionaries
 # psycopg2 is a PostgreSQL adapter for Python
+
 # while True:
 #     try:
-#         conn = psycopg2.connect(host='localhost', database='fastapi', user='postgres', password='root1234', cursor_factory=RealDictCursor)
+#         conn = psycopg2.connect(host='localhost', database='fastapi', user='postgres', password='xxxxxxxx', cursor_factory=RealDictCursor)
     
-#          # this is to execute SQL commands/statements
+#         # Execute SQL commands/statements
 #         cursor = conn.cursor()
 #         print("Database connection was successful")
 #         break
